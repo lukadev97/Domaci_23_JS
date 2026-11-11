@@ -1,0 +1,650 @@
+/* ==============================
+   1. RESET & BASE STYLES
+============================== */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    min-width: 0;
+    overflow-x: hidden;
+}
+
+body {
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #172033;
+    background: #eef4ff;
+    padding-top: 180px;
+}
+
+body.night-mode {
+    background: #1e293b;
+    color: #e5e7eb;
+}
+
+
+/* ==============================
+   2. LAYOUT & CONTAINERS
+============================== */
+
+.main-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 20px auto 40px;
+    padding: 0 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#weatherContainer,
+#upcomingWeatherContainer,
+#futureWeatherContainer {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* ==============================
+   3. HEADER - FIXED ON ALL DEVICES
+============================== */
+
+.app-header {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.95);
+    border-bottom: 1px solid #e5e7eb;
+}
+
+body.night-mode .app-header {
+    background: #111827;
+    border-bottom-color: #1e293b;
+}
+
+.header-content {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+}
+
+.brand-icon {
+    width: 45px;
+    height: 45px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 13px;
+    background: linear-gradient(135deg, #2563eb, #6366f1);
+    font-size: 23px;
+}
+
+.brand h1 {
+    font-size: 21px;
+}
+
+body.night-mode .brand h1 {
+    color: #f8fafc;
+}
+
+.brand p {
+    margin-top: 3px;
+    color: #64748b;
+    font-size: 12px;
+}
+
+body.night-mode .brand p {
+    color: #94a3b8;
+}
+
+/* Header Actions & Buttons */
+.header-actions {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.header-actions button {
+    width: 100%;
+    min-width: 0;
+    padding: 11px 15px;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.location-btn {
+    color: white;
+    background: linear-gradient(135deg, #2563eb, #6366f1);
+}
+
+.change-location-btn {
+    color: #172033;
+    background: white;
+    border: 1px solid #e5e7eb !important;
+}
+
+body.night-mode .change-location-btn {
+    color: #e2e8f0;
+    background: #1e293b;
+    border-color: #334155 !important;
+}
+
+
+/* ==============================
+   4. CURRENT WEATHER
+============================== */
+
+.current-weather {
+    width: 100%;
+    min-width: 0;
+    padding: 22px;
+    border-radius: 20px;
+    color: white;
+    background: linear-gradient(135deg, #2563eb, #4f46e5, #7c3aed);
+    box-shadow: 0 15px 35px rgba(37, 99, 235, 0.2);
+}
+
+.weather-location {
+    width: 100%;
+    min-width: 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.weather-location > div {
+    min-width: 0;
+}
+
+.weather-location .label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 11px;
+    opacity: 0.75;
+    text-transform: uppercase;
+}
+
+.weather-location h2 {
+    max-width: 100%;
+    font-size: 28px;
+    line-height: 1.1;
+    overflow-wrap: anywhere;
+}
+
+.weather-location p {
+    margin-top: 5px;
+    font-size: 14px;
+    opacity: 0.75;
+}
+
+.weather-icon {
+    width: 70px;
+    height: 70px;
+    flex-shrink: 0;
+    object-fit: contain;
+}
+
+/* Temperature Section */
+.current-temperature {
+    display: flex;
+    align-items: flex-start;
+    min-width: 0;
+    margin-top: 20px;
+}
+
+.current-temperature strong {
+    max-width: 100%;
+    font-size: 80px;
+    line-height: 0.9;
+    letter-spacing: -5px;
+}
+
+.current-temperature span {
+    flex-shrink: 0;
+    margin-top: 6px;
+    margin-left: 6px;
+    font-size: 22px;
+}
+
+.feels-like {
+    margin-top: 5px;
+    font-size: 13px;
+    opacity: 0.8;
+}
+
+/* Weather Details & Extra Info Grids */
+.weather-details,
+.today-extra {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    margin-top: 25px;
+}
+
+.today-extra {
+    margin-top: 8px;
+}
+
+.weather-detail,
+.today-extra > div {
+    min-width: 0;
+    padding: 13px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.12);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.today-extra > div {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.weather-detail span,
+.today-extra span {
+    font-size: 11px;
+    opacity: 0.75;
+    overflow-wrap: anywhere;
+}
+
+.today-extra span {
+    opacity: 0.7;
+}
+
+.weather-detail strong,
+.today-extra strong {
+    font-size: 15px;
+    overflow-wrap: anywhere;
+}
+
+.today-extra strong {
+    font-size: 14px;
+}
+
+
+/* ==============================
+   5. UPCOMING & FUTURE WEATHER
+============================== */
+
+.upcoming-weather,
+.future-weather {
+    width: 100%;
+    min-width: 0;
+    padding: 22px;
+    border-radius: 20px;
+    background: white;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.07);
+}
+
+body.night-mode .upcoming-weather,
+body.night-mode .future-weather,
+body.night-mode .future-date-picker {
+    background: #1e293b;
+    border-color: #334155;
+}
+
+.upcoming-weather h2 {
+    width: 100%;
+    margin-bottom: 18px;
+    font-size: 22px;
+    line-height: 1.25;
+    overflow-wrap: anywhere;
+}
+
+.future-weather .weather-location h2 {
+    margin-bottom: 0;
+    font-size: 28px;
+}
+
+/* Forecast Days */
+.forecast-days {
+    width: 100%;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+}
+
+.forecast-day {
+    width: 100%;
+    min-width: 0;
+    padding: 18px;
+    border-radius: 17px;
+    background: #f8fafc;
+    border: 1px solid #e5e7eb;
+}
+
+body.night-mode .forecast-day {
+    background: #0f172a;
+    border-color: #334155;
+}
+
+.forecast-date {
+    color: #64748b;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: capitalize;
+    overflow-wrap: anywhere;
+}
+
+.forecast-day img {
+    display: block;
+    width: 70px;
+    height: 70px;
+    margin: 8px auto;
+    object-fit: contain;
+}
+
+.forecast-condition {
+    min-height: 20px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    overflow-wrap: anywhere;
+}
+
+.forecast-temperature {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.forecast-temperature strong,
+.forecast-temperature span {
+    white-space: nowrap;
+}
+
+.forecast-temperature strong {
+    font-size: 26px;
+}
+
+.forecast-temperature span {
+    color: #64748b;
+    font-size: 16px;
+}
+
+.forecast-info,
+.sun-info {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 6px;
+}
+
+.forecast-info {
+    margin-top: 17px;
+    padding-top: 13px;
+    border-top: 1px solid #e5e7eb;
+    color: #64748b;
+    font-size: 11px;
+}
+
+.sun-info {
+    margin-top: 10px;
+    color: #475569;
+    font-size: 11px;
+}
+
+.forecast-info span,
+.sun-info span {
+    min-width: 0;
+    white-space: nowrap;
+}
+
+/* Future Weather Overrides */
+.future-weather .weather-detail,
+.future-weather .today-extra > div {
+    background: #f8fafc;
+    border: 1px solid #e5e7eb;
+}
+
+.future-weather .weather-detail span,
+.future-weather .today-extra span {
+    color: #64748b;
+    opacity: 1;
+}
+
+body.night-mode .future-main {
+    background: #172554;
+}
+
+body.night-mode .future-temperatures > div,
+body.night-mode .future-details > div {
+    background: #0f172a;
+}
+
+
+/* ==============================
+   6. FUTURE DATE PICKER
+============================== */
+
+.future-date-picker {
+    width: 100%;
+    padding: 20px;
+    border-radius: 18px;
+    background: white;
+    border: 1px solid #e5e7eb;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.future-date-picker label {
+    color: #334155;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+body.night-mode .future-date-picker label {
+    color: #e2e8f0;
+}
+
+.future-date-picker input {
+    width: 100%;
+    padding: 11px 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    font-size: 14px;
+}
+
+body.night-mode .future-date-picker input {
+    color: #f8fafc;
+    background: #0f172a;
+    border-color: #475569;
+    color-scheme: dark;
+}
+
+.future-date-picker button {
+    width: 100%;
+    padding: 11px 15px;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    background: linear-gradient(135deg, #2563eb, #6366f1);
+    font-weight: 600;
+    cursor: pointer;
+}
+
+
+/* ==============================
+   7. FOOTER & SHARED NIGHT TEXT
+============================== */
+
+.app-footer {
+    width: 100%;
+    padding: 20px 12px 30px;
+    text-align: center;
+    color: #64748b;
+    font-size: 12px;
+}
+
+body.night-mode .forecast-date,
+body.night-mode .forecast-temperature span,
+body.night-mode .forecast-info,
+body.night-mode .sun-info,
+body.night-mode .future-main p,
+body.night-mode .future-temperatures span,
+body.night-mode .future-details span,
+body.night-mode .app-footer {
+    color: #94a3b8;
+}
+
+
+/* ==============================
+   8. MEDIA QUERIES (RESPONSIVE)
+============================== */
+
+/* Tablet & Up */
+@media (min-width: 600px) {
+    body {
+        padding-top: 100px;
+    }
+
+    .app-header {
+        padding: 18px 24px;
+    }
+
+    .header-content {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .header-actions {
+        width: auto;
+        flex-direction: row;
+    }
+
+    .header-actions button {
+        width: auto;
+    }
+
+    .main-container {
+        padding: 0 20px;
+        margin-top: 30px;
+    }
+
+    .forecast-days {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .future-date-picker {
+        flex-direction: row;
+        align-items: flex-end;
+    }
+
+    .future-date-picker label {
+        align-self: center;
+    }
+
+    .future-date-picker input {
+        width: 200px;
+    }
+
+    .future-date-picker button {
+        width: auto;
+    }
+}
+
+/* Desktop & Up */
+@media (min-width: 900px) {
+    body {
+        padding-top: 80px;
+    }
+
+    .main-container {
+        padding: 0 30px;
+        margin-top: 40px;
+        gap: 28px;
+    }
+
+    .current-weather {
+        padding: 34px;
+    }
+
+    .weather-location h2 {
+        font-size: 40px;
+    }
+
+    .weather-icon {
+        width: 105px;
+        height: 105px;
+    }
+
+    .current-temperature strong {
+        font-size: 110px;
+    }
+
+    .weather-details,
+    .today-extra {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .upcoming-weather,
+    .future-weather {
+        padding: 30px;
+    }
+}
+
+/* Very Small Phones */
+@media (max-width: 360px) {
+    .main-container {
+        padding: 0 8px;
+    }
+
+    .current-weather,
+    .upcoming-weather,
+    .future-weather {
+        padding: 17px;
+    }
+
+    .weather-location h2 {
+        font-size: 24px;
+    }
+
+    .weather-icon {
+        width: 60px;
+        height: 60px;
+    }
+
+    .current-temperature strong {
+        font-size: 68px;
+    }
+
+    .forecast-info span,
+    .sun-info span {
+        font-size: 10px;
+    }
+}

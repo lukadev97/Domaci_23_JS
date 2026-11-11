@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="sr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Weather - Vremenska prognoza | Trenutno vrijeme i prognoza</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description"
+          content="Provjerite trenutnu vremensku prognozu, temperaturu, vremenske uslove i prognozu za naredne dane. Pronađite vremensku prognozu za svoju lokaciju!">
+
+    <meta name="keywords"
+          content="vremenska prognoza, prognoza vremena, vrijeme danas, trenutna temperatura, prognoza za naredne dane, vremenska prognoza po lokaciji, vremenska prognoza za moju lokaciju">
+
+    <meta name="robots" content="index, follow">
+
+    <meta name="language" content="Serbian">
+
+    <!-- Canonical URL - zamijeniti stvarnim URL-om -->
+    <!-- <link rel="canonical" href="https://www.example.com/"> -->
+
+    <!-- Open Graph SEO -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Weather – Vremenska prognoza">
+    <meta property="og:description"
+          content="Pratite trenutnu vremensku prognozu, temperaturu i vremenske uslove za svoju lokaciju.">
+    <!-- <meta property="og:url" content="https://www.example.com/"> -->
+    <meta property="og:site_name" content="Weather">
+
+    <!-- Open Graph Image -->
+    <!--
+    <meta property="og:image" content="https://www.example.com/images/weather-preview.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Weather – Vremenska prognoza"> -->
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Weather – Vremenska prognoza">
+    <meta name="twitter:description" content="Provjerite trenutnu vremensku prognozu i prognozu za naredne dane.">
+    <!--
+    <meta name="twitter:image" content="https://www.example.com/images/weather-preview.jpg">
+    <meta name="twitter:image:alt" content="Weather – Vremenska prognoza"> -->
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<header class="app-header">
+    <div class="header-content">
+
+        <div class="brand">
+            <div class="brand-icon">☁️</div>
+
+            <div>
+                <h1>Weather</h1>
+                <p>Vremenska prognoza</p>
+            </div>
+        </div>
+
+        <div class="header-actions">
+            <button
+                    type="button"
+                    id="currentGeoLocationBtn"
+                    class="location-btn"
+            >
+                📍 Moja lokacija
+            </button>
+
+            <button
+                    type="button"
+                    id="changeLocationBtn"
+                    class="change-location-btn"
+            >
+                Promijeni lokaciju
+            </button>
+        </div>
+
+    </div>
+</header>
+
+<main class="main-container">
+
+    <!-- Current weather -->
+    <div id="weatherContainer"></div>
+
+    <!-- Forecast for the upcoming days -->
+    <div id="upcomingWeatherContainer"></div>
+
+    <!-- Forecast for a specific future date -->
+    <div class="future-date-picker">
+
+        <label for="futureDate">
+            Odaberi datum
+        </label>
+
+        <input
+                type="date"
+                id="futureDate"
+        >
+
+        <button type="button"
+                id="futureDateBtn">
+            Prikaži prognozu
+        </button>
+
+    </div>
+
+    <div id="futureWeatherContainer"></div>
+
+</main>
+
+<footer class="app-footer">
+    <p>Weather App • Podaci o vremenu</p>
+</footer>
+
+<script
+        type="module"
+        src="./dist/script.min.js"
+></script>
+
+</body>
+</html>
