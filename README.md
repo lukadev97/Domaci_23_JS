@@ -66,6 +66,65 @@ Used to:
 
 ---
 
+
+## 📥 Installation and Running the Project
+
+Follow these steps to download and run the Weather Forecast App locally using WebStorm.
+
+### 1. Clone the Repository
+
+Open your terminal and run:
+
+```bash
+git clone https://github.com/lukadev97/Domaci_23_JS.git
+```
+
+### 2. Navigate to the Project Directory
+
+```bash
+cd Domaci_23_JS
+```
+
+### 3. Open the Project in WebStorm
+
+- Start WebStorm.
+- Select **File → Open**.
+- Navigate to the downloaded project folder.
+- Open the project.
+
+### 4. Configure Environment Variables
+
+API keys are stored in a `.env` file to keep sensitive information separate from the application source code.
+
+- Create a `.env` file in the root directory of the project.
+- Add the required API keys using the following format:
+
+```env
+API_KEY=your_weatherapi_key
+API_URL = https://api.weatherapi.com
+
+OPENWEATHER_API_KEY=your_openweathermap_api_key
+OPENWEATHER_API_URL = https://api.openweathermap.org/geo
+```
+
+- Replace the placeholder values with your actual API keys.
+
+You can obtain the required API keys from:
+
+- [WeatherAPI.com](https://www.weatherapi.com/)
+- [OpenWeatherMap](https://openweathermap.org/api)
+
+### 5. Run the Application
+
+- Open the `index.html` file in WebStorm.
+- Right-click on the file.
+- Select **Open in Browser** or use WebStorm's built-in browser preview.
+- Alternatively, configure and use a local development server.
+
+The application will open in your browser and be ready to use.
+
+---
+
 ## 🚀 How to Use
 
 1. Open the application to view the last displayed location.
